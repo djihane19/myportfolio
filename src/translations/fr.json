@@ -1,0 +1,262 @@
+{
+  "navbar": {
+    "brand": "jihan.CS",
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "certifications": "Certifications",
+    "contact": "Contact",
+    "download_cv": "Télécharger CV",
+    "language": "Langue"
+  },
+  "footer": {
+    "title": "Djihane Torchane",
+    "description": "Développeuse Full-Stack | Experte en IA | Ingénieure en Systèmes d'Information",
+    "navigation": "Navigation",
+    "follow_me": "Me contacter",
+    "copyright": "© {year} Djihane Torchane. Tous droits réservés.",
+    "designed_with": "Conçu avec <3 par Djihane Torchane"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "view_certificate": "Voir le certificat",
+    "items": [
+      {
+        "title": "Machine Learning",
+        "provider": "DeepLearning.AI, Coursera",
+        "year": "2024",
+        "description": "Apprentissage des concepts fondamentaux et techniques avancées de Machine Learning."
+      },
+      {
+        "title": "Front-End Developer",
+        "provider": "Meta, Coursera",
+        "year": "2023",
+        "description": "Spécialisation complète sur les technologies de développement front-end modernes."
+      },
+      {
+        "title": "Full-Stack Developer",
+        "provider": "1M Arab Coders",
+        "year": "2022",
+        "description": "Formation complète en développement web full-stack et applications modernes."
+      },
+      {
+        "title": "Skills of an Entrepreneur",
+        "provider": "Leaders Generations",
+        "year": "2022",
+        "description": "Compétences entrepreneuriales, innovation et leadership dans le domaine tech."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "send_message_title": "Envoyez-moi un message",
+    "name_label": "Nom",
+    "name_placeholder": "Votre nom",
+    "email_label": "Email",
+    "email_placeholder": "votre-email@exemple.com",
+    "subject_label": "Sujet",
+    "subject_placeholder": "Sujet de votre message",
+    "message_label": "Message",
+    "message_placeholder": "Votre message...",
+    "send_button": "Envoyer le message",
+    "contact_info_title": "Informations de contact",
+    "email_title": "Email",
+    "phone_title": "Téléphone",
+    "location_title": "Localisation",
+    "social_media_title": "Réseaux sociaux",
+    "alert_message": "Merci pour votre message ! Cette fonctionnalité est statique pour la démonstration."
+  },
+  "experience": {
+    "title": "Éducation & Expérience",
+    "education_title": "Éducation",
+    "experience_title": "Expérience",
+    "community_title": "Engagement Communautaire",
+    "education": [
+      {
+        "title": "Diplôme d'Ingénieur en Systèmes d'Information",
+        "period": "2022 - 2025",
+        "institution": "École nationale Supérieure d'Informatique (ESI), Alger",
+        "description": "Formation approfondie en conception, développement et gestion de systèmes d'information avancés."
+      },
+      {
+        "title": "Cycle Préparatoire d'Ingénierie",
+        "period": "2020 - 2022",
+        "institution": "ESTIN, Amizour – Béjaïa",
+        "description": "Formation intensive en mathématiques, physique et informatique préparant aux études d'ingénierie."
+      }
+    ],
+    "experience": [
+      {
+        "title": "Développeuse Full-Stack",
+        "period": "Oct 2024 - Juin 2025",
+        "company": "Finoutsource - Système Bancaire Core",
+        "tasks": [
+          "Conception d'un système bancaire interne sécurisé",
+          "Développement d'API pour la gestion des comptes, transactions et prêts",
+          "Implémentation d'un système d'authentification basé sur RBAC avec JWT"
+        ]
+      },
+      {
+        "title": "Développeuse Web",
+        "period": "Fév - Juin 2022",
+        "company": "Hôpital COVID, Amizour - Système d'Information",
+        "tasks": [
+          "Remplacement des dossiers papier par un système numérique sécurisé",
+          "Développement d'un accès basé sur les rôles pour médecins et administrateurs",
+          "Amélioration de l'efficacité hospitalière grâce à la numérisation complète"
+        ]
+      }
+    ],
+    "community": [
+      {
+        "title": "SOAI - School of AI (Alger)",
+        "tasks": [
+          "Création de kits de sponsoring et soutien aux opérations d'événements",
+          "Organisation de hackathons et de conférences tech"
+        ]
+      },
+      {
+        "title": "GDG - Google Developer Group (ETIC Alger)",
+        "tasks": [
+          "Contribution aux événements de développement, ateliers et engagement communautaire",
+          "Promotion des technologies Google et collaboration avec la communauté tech"
+        ]
+      }
+    ]
+  },
+  "hero": {
+    "greeting": "Salut, je suis",
+    "name": "Djihane Torchane",
+    "title": "Développeuse Full-Stack | Experte en IA | Ingénieure en Systèmes d'Information",
+    "description": "Je crée des applications web évolutives, des interfaces intuitives et des systèmes alimentés par l'IA avec une touche humaine.",
+    "contact_button": "Me contacter",
+    "projects_button": "Voir mes projets"
+  },
+  "projects": {
+    "title": "Projets",
+    "filters": {
+      "all": "Tous",
+      "full-stack": "Full-Stack",
+      "ai-ml": "IA/ML",
+      "web": "Web",
+      "mobile": "Mobile"
+    },
+    "details_link": "Détails",
+    "items": [
+      {
+        "title": "Système Bancaire Core",
+        "category": "full-stack,web",
+        "description": "Système bancaire interne sécurisé pour les institutions financières avec gestion des comptes, transactions et prêts.",
+        "technologies": ["React", "Django REST", "PostgreSQL", "JWT"],
+        "date": "Oct 2024 - Juin 2025",
+        "tag_label": "Full-Stack"
+      },
+      {
+        "title": "Détection de Fraude IA",
+        "category": "ai-ml",
+        "description": "Pipeline basé sur LightGBM pour détecter les fraudes dans les transactions financières avec ingénierie avancée des caractéristiques.",
+        "technologies": ["Python", "LightGBM", "scikit-learn", "Pandas"],
+        "date": "Avril 2025",
+        "tag_label": "IA/ML"
+      },
+      {
+        "title": "Vera Atelier - E-Commerce",
+        "category": "web,full-stack",
+        "description": "Plateforme e-commerce de mode avec tableau de bord administrateur et gestion des commandes en temps réel.",
+        "technologies": ["React", "Supabase", "Tailwind CSS", "Auth"],
+        "date": "Mars 2025",
+        "tag_label": "Web"
+      },
+      {
+        "title": "App de Prédiction de Maladies",
+        "category": "ai-ml,web",
+        "description": "Outil basé sur Streamlit pour prédire le diabète, les maladies cardiaques et Parkinson avec interface interactive.",
+        "technologies": ["Python", "Streamlit", "scikit-learn", "pandas"],
+        "date": "Février 2025",
+        "tag_label": "IA/ML"
+      },
+      {
+        "title": "Plateforme Immobilière",
+        "category": "web,full-stack",
+        "description": "Site d'annonces immobilières complet avec API, authentification et fonctionnalités de recherche et filtrage.",
+        "technologies": ["React.js", "Django", "SQL", "Bootstrap"],
+        "date": "Déc 2023 - Fév 2024",
+        "tag_label": "Web"
+      },
+      {
+        "title": "Système d'Information Hospitalier",
+        "category": "web",
+        "description": "Système numérique sécurisé remplaçant les dossiers papier pour la gestion des patients et consultations.",
+        "technologies": ["HTML/CSS", "JavaScript", "Django", "Bootstrap"],
+        "date": "Fév - Juin 2022",
+        "tag_label": "Web"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Compétences",
+    "categories": [
+      {
+        "title": "Développement",
+        "skills": [
+          { "name": "Frontend", "percentage": 90 },
+          { "name": "Backend", "percentage": 85 },
+          { "name": "Base de données", "percentage": 80 },
+          { "name": "DevOps", "percentage": 75 }
+        ]
+      },
+      {
+        "title": "Langages",
+        "skills": [
+          { "name": "Python" },
+          { "name": "JavaScript" },
+          { "name": "SQL" },
+          { "name": "PHP" },
+          { "name": "R" },
+          { "name": "HTML5" }
+        ]
+      },
+      {
+        "title": "Frameworks & Outils",
+        "skills": [
+          { "name": "React" },
+          { "name": "Node.js" },
+          { "name": "Django" },
+          { "name": "Laravel" },
+          { "name": "Figma" },
+          { "name": "GitHub" }
+        ]
+      },
+      {
+        "title": "IA & Machine Learning",
+        "skills": [
+          { "name": "scikit-learn" },
+          { "name": "TensorFlow" },
+          { "name": "LightGBM" },
+          { "name": "Analyse de données" }
+        ]
+      },
+      {
+        "title": "Bases de Données",
+        "skills": [
+          { "name": "PostgreSQL" },
+          { "name": "MySQL" },
+          { "name": "MongoDB" },
+          { "name": "Supabase" },
+          { "name": "Firebase" }
+        ]
+      },
+      {
+        "title": "Soft Skills",
+        "skills": [
+          { "name": "Résolution de problèmes", "percentage": 95 },
+          { "name": "Travail d'équipe", "percentage": 90 },
+          { "name": "Gestion de projet Agile", "percentage": 85 },
+          { "name": "Communication", "percentage": 90 }
+        ]
+      }
+    ]
+  }
+}
