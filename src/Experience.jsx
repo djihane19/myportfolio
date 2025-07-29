@@ -1,119 +1,391 @@
 import React, { useContext } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { LanguageContext } from './LanguageContext';
 import translations from './translations';
-import './Experience.css';
 
 function Experience() {
   const { language } = useContext(LanguageContext);
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
 
-  const education = translations[language].experience.education.map((item, index) => ({
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { scale: 0.95, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
+  // Data with icons
+  const education = translations[language].experience.education.map((item) => ({
     ...item,
     icon: 'fas fa-graduation-cap'
   }));
 
-  const experience = translations[language].experience.experience.map((item, index) => ({
+  const experience = translations[language].experience.experience.map((item) => ({
     ...item,
     icon: 'fas fa-briefcase'
   }));
 
   const community = translations[language].experience.community.map((item, index) => ({
     ...item,
-    icon: ['fas fa-robot', 'fab fa-google'][index]
+    icon: ['fas fa-robot', 'fab fa-google'][index],
+    color: ['#22D3EE', '#4FD1FF'][index] // Using your accent colors
   }));
 
+  // Styles using your color palette
+  const styles = {
+    section: {
+      backgroundColor: '#1B1F3B', // Midnight Indigo
+      padding: '5rem 0',
+      color: '#CBD5E1' // Cool Gray
+    },
+    title: {
+      color: '#F9EBC7', // Warm Sand
+      marginBottom: '3rem',
+      position: 'relative',
+      display: 'inline-block'
+    },
+    titleUnderline: {
+      position: 'absolute',
+      bottom: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '80px',
+      height: '4px',
+      background: 'linear-gradient(90deg, #4FD1FF, #22D3EE)', // Electric Blue to Cyan Glow
+      borderRadius: '2px'
+    },
+    sectionTitle: {
+      color: '#4FD1FF', // Electric Blue
+      marginBottom: '1.5rem',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem'
+    },
+    sectionIcon: {
+      color: '#22D3EE' // Cyan Glow
+    },
+    timelineDot: {
+      backgroundColor: '#22D3EE', // Cyan Glow
+      border: '3px solid #1B1F3B' // Midnight Indigo
+    },
+    timelineLine: {
+      backgroundColor: 'rgba(79, 209, 255, 0.3)' // Electric Blue with opacity
+    },
+    card: {
+      backgroundColor: '#2D3250',
+      border: 'none',
+      borderRadius: '12px',
+      transition: 'all 0.3s ease'
+    },
+    cardHover: {
+      transform: 'translateY(-5px)',
+      boxShadow: '0 10px 25px rgba(79, 209, 255, 0.2)'
+    },
+    periodBadge: {
+      backgroundColor: 'rgba(34, 211, 238, 0.1)', // Cyan Glow with opacity
+      color: '#22D3EE', // Cyan Glow
+      padding: '0.25rem 0.75rem',
+      borderRadius: '50px',
+      fontWeight: 600
+    },
+    institutionText: {
+      color: '#F9EBC7' // Warm Sand
+    },
+    descriptionText: {
+      color: 'rgba(203, 213, 225, 0.8)' // Cool Gray with opacity
+    },
+    taskItem: {
+      color: 'rgba(203, 213, 225, 0.8)', // Cool Gray with opacity
+      paddingLeft: 0,
+      border: 'none',
+      position: 'relative',
+      paddingLeft: '1.25rem'
+    },
+    taskBullet: {
+      position: 'absolute',
+      left: 0,
+      color: '#4FD1FF' // Electric Blue
+    },
+    communityIconContainer: {
+      backgroundColor: 'rgba(34, 211, 238, 0.1)', // Cyan Glow with opacity
+      borderRadius: '50%',
+      padding: '1rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0
+    }
+  };
+
   return (
-    <section id="experience" className="py-5 bg-light">
+    <section id="experience" style={styles.section} ref={ref}>
       <div className="container">
-        <h2 className="display-5 fw-bold section-title mb-5 text-center">
+        <motion.h2 
+          style={styles.title} 
+          className="display-5 fw-bold text-center"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1, 
+              y: 0,
+              transition: { duration: 0.6 }
+            }
+          }}
+        >
           {translations[language].experience.title}
-        </h2>
+          <motion.span 
+            style={styles.titleUnderline}
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+          />
+        </motion.h2>
+
         <div className="row g-4">
-          <div className="col-md-6">
-            <h3 className="fs-3 fw-semibold mb-3 d-flex align-items-center">
-              <i className="fas fa-graduation-cap text-primary me-2"></i>
+          {/* Education Column */}
+          <motion.div 
+            className="col-lg-6"
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={containerVariants}
+          >
+            <motion.h3 style={styles.sectionTitle} variants={itemVariants}>
+              <i style={styles.sectionIcon} className="fas fa-graduation-cap"></i>
               {translations[language].experience.education_title}
-            </h3>
-            <div className="timeline-container">
+            </motion.h3>
+            
+            <div className="position-relative ps-4">
+              <div 
+                style={{
+                  ...styles.timelineLine,
+                  position: 'absolute',
+                  left: '1.375rem',
+                  top: 0,
+                  bottom: 0,
+                  width: '2px'
+                }}
+              />
+              
               {education.map((item, index) => (
-                <div key={index} className="timeline-item" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="timeline-dot"></div>
-                  <div className="card h-100 shadow-sm">
-                    <div className="card-body">
-                      <div className="d-flex justify-content-between align-items-start mb-2">
-                        <h4 className="fs-5 fw-semibold">{item.title}</h4>
-                        <span className="fs-6 bg-primary-subtle text-primary-emphasis py-1 px-2 rounded">
-                          {item.period}
-                        </span>
-                      </div>
-                      <h5 className="text-muted mb-2">{item.institution}</h5>
-                      <p className="text-muted">{item.description}</p>
+                <motion.div 
+                  key={index}
+                  className="position-relative mb-4"
+                  variants={itemVariants}
+                >
+                  <div 
+                    style={{
+                      ...styles.timelineDot,
+                      position: 'absolute',
+                      left: '-0.375rem',
+                      top: '1.25rem',
+                      width: '1.25rem',
+                      height: '1.25rem',
+                      borderRadius: '50%',
+                      zIndex: 1
+                    }}
+                  />
+                  
+                  <motion.div
+                    style={styles.card}
+                    className="p-4 mb-4 shadow"
+                    whileHover={styles.cardHover}
+                    variants={cardVariants}
+                  >
+                    <div className="d-flex justify-content-between align-items-start mb-3">
+                      <h4 style={{ color: '#F9EBC7' }} className="fs-5 fw-semibold">
+                        {item.title}
+                      </h4>
+                      <span style={styles.periodBadge}>
+                        {item.period}
+                      </span>
                     </div>
-                  </div>
-                </div>
+                    <h5 style={styles.institutionText} className="mb-3">
+                      {item.institution}
+                    </h5>
+                    <p style={styles.descriptionText}>
+                      {item.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
               ))}
             </div>
-          </div>
-          <div className="col-md-6">
-            <h3 className="fs-3 fw-semibold mb-3 d-flex align-items-center">
-              <i className="fas fa-briefcase text-primary me-2"></i>
+          </motion.div>
+
+          {/* Experience Column */}
+          <motion.div 
+            className="col-lg-6"
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={containerVariants}
+          >
+            <motion.h3 style={styles.sectionTitle} variants={itemVariants}>
+              <i style={styles.sectionIcon} className="fas fa-briefcase"></i>
               {translations[language].experience.experience_title}
-            </h3>
-            <div className="timeline-container">
+            </motion.h3>
+            
+            <div className="position-relative ps-4">
+              <div 
+                style={{
+                  ...styles.timelineLine,
+                  position: 'absolute',
+                  left: '1.375rem',
+                  top: 0,
+                  bottom: 0,
+                  width: '2px'
+                }}
+              />
+              
               {experience.map((item, index) => (
-                <div key={index} className="timeline-item" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="timeline-dot"></div>
-                  <div className="card h-100 shadow-sm">
-                    <div className="card-body">
-                      <div className="d-flex justify-content-between align-items-start mb-2">
-                        <h4 className="fs-5 fw-semibold">{item.title}</h4>
-                        <span className="fs-6 bg-primary-subtle text-primary-emphasis py-1 px-2 rounded">
-                          {item.period}
-                        </span>
-                      </div>
-                      <h5 className="text-muted mb-2">{item.company}</h5>
-                      <ul className="list-group list-group-flush">
-                        {item.tasks.map((task, i) => (
-                          <li key={i} className="list-group-item border-0 ps-0 text-muted">
-                            {task}
-                          </li>
-                        ))}
-                      </ul>
+                <motion.div 
+                  key={index}
+                  className="position-relative mb-4"
+                  variants={itemVariants}
+                >
+                  <div 
+                    style={{
+                      ...styles.timelineDot,
+                      position: 'absolute',
+                      left: '-0.375rem',
+                      top: '1.25rem',
+                      width: '1.25rem',
+                      height: '1.25rem',
+                      borderRadius: '50%',
+                      zIndex: 1
+                    }}
+                  />
+                  
+                  <motion.div
+                    style={styles.card}
+                    className="p-4 mb-4 shadow"
+                    whileHover={styles.cardHover}
+                    variants={cardVariants}
+                  >
+                    <div className="d-flex justify-content-between align-items-start mb-3">
+                      <h4 style={{ color: '#F9EBC7' }} className="fs-5 fw-semibold">
+                        {item.title}
+                      </h4>
+                      <span style={styles.periodBadge}>
+                        {item.period}
+                      </span>
                     </div>
-                  </div>
-                </div>
+                    <h5 style={styles.institutionText} className="mb-3">
+                      {item.company}
+                    </h5>
+                    <ul className="list-unstyled">
+                      {item.tasks.map((task, i) => (
+                        <motion.li 
+                          key={i} 
+                          style={styles.taskItem}
+                          variants={itemVariants}
+                        >
+                          <i style={styles.taskBullet} className="fas fa-circle-small"></i>
+                          {task}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-        <div className="mt-5">
-          <h3 className="fs-3 fw-semibold mb-3 d-flex align-items-center">
-            <i className="fas fa-users text-primary me-2"></i>
+
+        {/* Community Section */}
+        <motion.div 
+          className="mt-5"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          <motion.h3 style={styles.sectionTitle} variants={itemVariants}>
+            <i style={styles.sectionIcon} className="fas fa-users"></i>
             {translations[language].experience.community_title}
-          </h3>
+          </motion.h3>
+          
           <div className="row g-4">
             {community.map((item, index) => (
-              <div key={index} className="col-md-6 experience-card" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="card h-100 shadow-sm">
-                  <div className="card-body d-flex align-items-start gap-3">
-                    <div className="rounded-circle bg-primary-subtle p-2">
-                      <i className={`${item.icon} text-primary fs-5`}></i>
+              <motion.div 
+                key={index} 
+                className="col-md-6"
+                variants={itemVariants}
+              >
+                <motion.div
+                  style={styles.card}
+                  className="p-4 h-100 shadow"
+                  whileHover={styles.cardHover}
+                  variants={cardVariants}
+                >
+                  <div className="d-flex align-items-start gap-4">
+                    <div 
+                      style={{
+                        ...styles.communityIconContainer,
+                        backgroundColor: `rgba(${parseInt(item.color.slice(1, 3), 16)}, ${parseInt(item.color.slice(3, 5), 16)}, ${parseInt(item.color.slice(5, 7), 16)}, 0.1)`
+                      }}
+                    >
+                      <i 
+                        className={`${item.icon} fs-4`} 
+                        style={{ color: item.color }}
+                      ></i>
                     </div>
                     <div>
-                      <h4 className="fs-5 fw-semibold mb-2">{item.title}</h4>
-                      <ul className="list-group list-group-flush">
+                      <h4 style={{ color: '#F9EBC7' }} className="fs-5 fw-semibold mb-3">
+                        {item.title}
+                      </h4>
+                      <ul className="list-unstyled">
                         {item.tasks.map((task, i) => (
-                          <li key={i} className="list-group-item border-0 ps-0 text-muted">
+                          <motion.li 
+                            key={i} 
+                            style={styles.taskItem}
+                            variants={itemVariants}
+                          >
+                            <i style={styles.taskBullet} className="fas fa-circle-small"></i>
                             {task}
-                          </li>
+                          </motion.li>
                         ))}
                       </ul>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

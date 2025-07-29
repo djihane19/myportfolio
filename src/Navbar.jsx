@@ -22,7 +22,7 @@ function Navbar() {
     { href: '/contact', label: translations[language].navbar.contact },
   ];
 
-  // Inline styles 
+  // Inline styles using your color palette
   const styles = {
     header: {
       position: 'sticky',

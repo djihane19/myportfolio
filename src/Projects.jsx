@@ -9,12 +9,12 @@ function Projects() {
 
   // Define color gradients 
   const colorGradients = [
-    'linear-gradient(135deg, #4FD1FF, #22D3EE)', // Electric Blue to Cyan Glow
+    'linear-gradient(135deg, #2D3250, #22D3EE)', // Electric Blue to Cyan Glow
     'linear-gradient(135deg, #1B1F3B, #4FD1FF)', // Midnight Indigo to Electric Blue
     'linear-gradient(135deg, #22D3EE, #1B1F3B)', // Cyan Glow to Midnight Indigo
-    'linear-gradient(135deg, #4FD1FF, #F9EBC7)', // Electric Blue to Warm Sand
+    'linear-gradient(135deg, #4FD1FF, #2D3250)', // Electric Blue to Warm Sand
     'linear-gradient(135deg, #1B1F3B, #22D3EE)', // Midnight Indigo to Cyan Glow
-    'linear-gradient(135deg, #F9EBC7, #1B1F3B)'  // Warm Sand to Midnight Indigo
+    'linear-gradient(135deg, #22D3EE, #1B1F3B)'  // Warm Sand to Midnight Indigo
   ];
 
   const projects = translations[language].projects.items.map((item, index) => ({

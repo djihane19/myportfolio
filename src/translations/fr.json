@@ -38,7 +38,7 @@
       {
         "title": "Full-Stack Developer",
         "provider": "1M Arab Coders",
-        "year": "2022",
+        "year": "2019",
         "description": "Formation complète en développement web full-stack et applications modernes."
       },
       {
@@ -72,7 +72,7 @@
     "title": "Éducation & Expérience",
     "education_title": "Éducation",
     "experience_title": "Expérience",
-    "community_title": "Engagement Communautaire",
+   
     "education": [
       {
         "title": "Diplôme d'Ingénieur en Systèmes d'Information",
@@ -110,20 +110,7 @@
       }
     ],
     "community": [
-      {
-        "title": "SOAI - School of AI (Alger)",
-        "tasks": [
-          "Création de kits de sponsoring et soutien aux opérations d'événements",
-          "Organisation de hackathons et de conférences tech"
-        ]
-      },
-      {
-        "title": "GDG - Google Developer Group (ETIC Alger)",
-        "tasks": [
-          "Contribution aux événements de développement, ateliers et engagement communautaire",
-          "Promotion des technologies Google et collaboration avec la communauté tech"
-        ]
-      }
+ 
     ]
   },
   "hero": {
@@ -201,10 +188,10 @@
       {
         "title": "Développement",
         "skills": [
-          { "name": "Frontend", "percentage": 90 },
-          { "name": "Backend", "percentage": 85 },
+          { "name": "Frontend", "percentage": 85 },
+          { "name": "Backend", "percentage": 75 },
           { "name": "Base de données", "percentage": 80 },
-          { "name": "DevOps", "percentage": 75 }
+          { "name": "Data Science", "percentage": 70 }
         ]
       },
       {
@@ -251,10 +238,10 @@
       {
         "title": "Soft Skills",
         "skills": [
-          { "name": "Résolution de problèmes", "percentage": 95 },
-          { "name": "Travail d'équipe", "percentage": 90 },
+          { "name": "Résolution de problèmes", "percentage": 80 },
+          { "name": "Travail d'équipe", "percentage": 75 },
           { "name": "Gestion de projet Agile", "percentage": 85 },
-          { "name": "Communication", "percentage": 90 }
+          { "name": "Communication", "percentage": 80 }
         ]
       }
     ]
