@@ -326,66 +326,7 @@ function Experience() {
           </motion.div>
         </div>
 
-        {/* Community Section */}
-        <motion.div 
-          className="mt-5"
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={containerVariants}
-        >
-          <motion.h3 style={styles.sectionTitle} variants={itemVariants}>
-            <i style={styles.sectionIcon} className="fas fa-users"></i>
-            {translations[language].experience.community_title}
-          </motion.h3>
-          
-          <div className="row g-4">
-            {community.map((item, index) => (
-              <motion.div 
-                key={index} 
-                className="col-md-6"
-                variants={itemVariants}
-              >
-                <motion.div
-                  style={styles.card}
-                  className="p-4 h-100 shadow"
-                  whileHover={styles.cardHover}
-                  variants={cardVariants}
-                >
-                  <div className="d-flex align-items-start gap-4">
-                    <div 
-                      style={{
-                        ...styles.communityIconContainer,
-                        backgroundColor: `rgba(${parseInt(item.color.slice(1, 3), 16)}, ${parseInt(item.color.slice(3, 5), 16)}, ${parseInt(item.color.slice(5, 7), 16)}, 0.1)`
-                      }}
-                    >
-                      <i 
-                        className={`${item.icon} fs-4`} 
-                        style={{ color: item.color }}
-                      ></i>
-                    </div>
-                    <div>
-                      <h4 style={{ color: '#F9EBC7' }} className="fs-5 fw-semibold mb-3">
-                        {item.title}
-                      </h4>
-                      <ul className="list-unstyled">
-                        {item.tasks.map((task, i) => (
-                          <motion.li 
-                            key={i} 
-                            style={styles.taskItem}
-                            variants={itemVariants}
-                          >
-                            <i style={styles.taskBullet} className="fas fa-circle-small"></i>
-                            {task}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+     
       </div>
     </section>
   );

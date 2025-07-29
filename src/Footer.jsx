@@ -28,7 +28,7 @@ function Footer() {
       color: '#22D3EE' // Cyan Glow
     },
     { 
-      href: 'https://github.com/djihane-torchane', 
+      href: 'https://github.com/djihane19', 
       icon: 'fab fa-github', 
       label: 'GitHub',
       color: '#F9EBC7' // Warm Sand
@@ -130,6 +130,7 @@ function Footer() {
       alignItems: 'center',
       justifyContent: 'center',
       transition: 'all 0.3s ease',
+      textDecoration: 'none',
       backgroundColor: 'rgba(203, 213, 225, 0.1)' // Cool Gray with opacity
     },
     socialIconHover: (color) => ({

@@ -53,7 +53,8 @@ function Navbar() {
       fontWeight: 500,
       padding: '0.5rem 1rem',
       position: 'relative',
-      transition: 'all 0.3s ease'
+      transition: 'all 0.3s ease',
+      textDecoration:'none'
     },
     navLinkHover: {
       color: '#4FD1FF' // Electric Blue

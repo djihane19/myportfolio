@@ -84,9 +84,11 @@ function About() {
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
+      textDecoration:'none',
       transition: 'all 0.3s ease',
     },
     secondaryButton: {
+      textDecoration:'none',
       backgroundColor: '#1B1F3B', // Midnight Indigo
       color: '#F9EBC7', // Warm Sand
       border: 'none',
@@ -207,7 +209,7 @@ function About() {
               </motion.a>
               
               <motion.a
-                href="#"
+                href="https://github.com/djihane19"
                 style={styles.secondaryButton}
                 whileHover={{ 
                   backgroundColor: '#2D3250',

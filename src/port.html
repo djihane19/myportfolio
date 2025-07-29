@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djihane Torchane - Professional Resume</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: #1f2937;
+        }
+        
+        .resume-container {
+            max-width: 12.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.5in;
+        }
+        
+        .section-title {
+            color: #1e40af;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid #3b82f6;
+        }
+        
+        .contact-link {
+            color: #1e40af;
+            text-decoration: none;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .skill-tag {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
+            display: inline-block;
+        }
+        
+        .project-title {
+            color: #1e40af;
+            font-weight: 600;
+        }
+        
+        .bullet-point {
+            margin-bottom: 0.375rem;
+        }
+        
+        .bullet-point::before {
+            content: "•";
+            color: #3b82f6;
+            margin-right: 0.5rem;
+        }
+        
+        @media print {
+            body { margin: 0; }
+            .resume-container { padding: 0.5in; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">DJIHANE TORCHANE</h1>
+            <h2 class="text-xl font-medium text-blue-600 mb-4">Full-Stack Developer | AI Engineer | Data Scientist</h2>
+            <div class="flex flex-wrap justify-center items-center gap-4 text-sm">
+                <span><i class="fas fa-envelope text-blue-600 mr-1"></i> kd_torchane@esi.dz</span>
+                <span><i class="fas fa-phone text-blue-600 mr-1"></i> +213 781 038 183</span>
+                <span><i class="fab fa-linkedin text-blue-600 mr-1"></i> <a href="https://www.linkedin.com/in/dji-hane-b92818276" class="contact-link">LinkedIn</a></span>
+                <span><i class="fab fa-github text-blue-600 mr-1"></i> <a href="https://github.com/djihane19" class="contact-link">GitHub</a></span>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="mb-6">
+            <h3 class="section-title">PROFESSIONAL SUMMARY</h3>
+            <p class="text-gray-700">
+                Results-driven Full-Stack Developer and AI Engineer with 2+ years of experience building scalable web applications and machine learning solutions. Proven expertise in React.js, Node.js, Django, and Python for developing enterprise-grade banking systems and predictive AI models. Strong background in database design, API development, and cloud technologies. Seeking to leverage technical skills and innovative problem-solving abilities in a challenging full-stack or AI development role.
+            </p>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="mb-6">
+            <h3 class="section-title">TECHNICAL SKILLS</h3>
+            <div class="grid grid-cols-1 gap-3">
+                <div>
+                    <span class="font-medium text-gray-800">Programming Languages:</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+                <div>
+                    <span class="font-medium text-gray-800">Frontend Technologies:</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+                <div>
+                    <span class="font-medium text-gray-800">Backend Frameworks:</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Laravel</span>
+                </div>
+                <div>
+                    <span class="font-medium text-gray-800">Databases:</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Supabase</span>
+                </div>
+                <div>
+                    <span class="font-medium text-gray-800">Machine Learning:</span>
+                    <span class="skill-tag">scikit-learn</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">LightGBM</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+                <div>
+                    <span class="font-medium text-gray-800">Cloud & Tools:</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Agile/Scrum</span>
+                    <span class="skill-tag">Streamlit</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Clerk Authentication</span>
+                </div>
+                <div>
+                    <span class="font-medium text-gray-800">Specialized Skills:</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">JWT Authentication</span>
+                    <span class="skill-tag">RBAC</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="mb-6">
+            <h3 class="section-title">PROFESSIONAL EXPERIENCE</h3>
+            <div class="mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Full-Stack Developer | Finoutsource</h4>
+                    </div>
+                    <span class="text-sm text-gray-600 italic">October 2024 – June 2025</span>
+                </div>
+                <div class="pl-4">
+                    <div class="bullet-point">Architected and developed comprehensive core banking system using React.js, Django, and PostgreSQL</div>
+                    <div class="bullet-point">Built 15+ secure REST APIs for account management, transactions, and loan processing with JWT authentication and RBAC</div>
+                    <div class="bullet-point">Designed normalized relational database schemas following banking industry standards</div>
+                    <div class="bullet-point">Implemented Agile methodology with GitHub Projects, delivering features 20% ahead of schedule</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Projects -->
+        <div class="mb-6">
+            <h3 class="section-title">KEY PROJECTS</h3>
+            
+            <div class="mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="project-title">Fraud Detection System | Machine Learning Project</h4>
+                    <span class="text-sm text-gray-600 italic">April 2025</span>
+                </div>
+                <div class="pl-4">
+                    <div class="bullet-point">Developed ML pipeline achieving 94% accuracy in detecting fraudulent transactions using LightGBM on PaySim dataset</div>
+                    <div class="bullet-point">Applied advanced feature engineering and stratified K-Fold validation techniques</div>
+                    <div class="bullet-point">Evaluated model performance using precision-recall curves, AUC metrics, and confusion matrices</div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="project-title">Vera Atelier E-commerce Platform | Full-Stack Development</h4>
+                    <span class="text-sm text-gray-600 italic">March 2025</span>
+                </div>
+                <div class="pl-4">
+                    <div class="bullet-point">Built responsive fashion e-commerce website with React.js and Supabase backend</div>
+                    <div class="bullet-point">Developed admin dashboard with real-time inventory management and sales analytics</div>
+                    <div class="bullet-point">Integrated dynamic product catalog with search functionality and mobile-optimized checkout</div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="project-title">Healthcare Prediction Web Application | AI/ML Project</h4>
+                    <span class="text-sm text-gray-600 italic">February 2025</span>
+                </div>
+                <div class="pl-4">
+                    <div class="bullet-point">Created multi-disease prediction system for diabetes, heart disease, and Parkinson's using scikit-learn</div>
+                    <div class="bullet-point">Deployed production-ready application with Streamlit UI, serving 500+ predictions monthly</div>
+                    <div class="bullet-point">Implemented data preprocessing pipeline with 89% model accuracy across all conditions</div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="project-title">Personal Blog Website | Full-Stack Development</h4>
+                    <span class="text-sm text-gray-600 italic">Independent Project</span>
+                </div>
+                <div class="pl-4">
+                    <div class="bullet-point">Built complete blogging platform from scratch using React.js, Express.js, and MongoDB</div>
+                    <div class="bullet-point">Implemented Clerk authentication system for secure user management and access control</div>
+                    <div class="bullet-point">Developed responsive design with rich text editor, comment system, and content management features</div>
+                    <div class="bullet-point">Created RESTful API architecture with full CRUD operations for posts, users, and comments</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="mb-6">
+            <h3 class="section-title">EDUCATION</h3>
+            <div class="flex justify-between items-start mb-2">
+                <div>
+                    <h4 class="font-semibold text-gray-900">Bachelor of Engineering in Information Systems</h4>
+                    <p class="text-gray-700">École nationale Supérieure d'Informatique (ESI), Algiers</p>
+                    <p class="text-sm text-gray-600"><strong>Relevant Coursework:</strong> Data Structures, Algorithms, Database Systems, Software Engineering, Machine Learning</p>
+                </div>
+                <span class="text-sm text-gray-600 italic">2020 – 2025</span>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="mb-6">
+            <h3 class="section-title">CERTIFICATIONS</h3>
+            <div class="pl-4">
+                <div class="bullet-point"><strong>Machine Learning Specialization</strong> – DeepLearning.AI (Coursera)</div>
+                <div class="bullet-point"><strong>Meta Front-End Developer Professional Certificate</strong> – Meta (Coursera)</div>
+                <div class="bullet-point"><strong>Full-Stack Development</strong> – 1M Arab Coders Initiative</div>
+            </div>
+        </div>
+
+        <!-- Additional Projects -->
+        <div class="mb-6">
+            <h3 class="section-title">ADDITIONAL PROJECTS</h3>
+            <div class="pl-4">
+                <div class="bullet-point"><strong>MERN E-commerce Platform</strong> | Full-stack application with MongoDB, Express.js, React, Node.js</div>
+                <div class="bullet-point"><strong>Financial Sentiment Analysis</strong> | Kaggle competition project analyzing market sentiment data</div>
+                <div class="bullet-point"><strong>COVID Hospital Information System</strong> | Responsive web platform for Hospital of Amizour, Béjaia</div>
+            </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="mb-6">
+            <h3 class="section-title">LANGUAGES</h3>
+            <div class="flex flex-wrap gap-4">
+                <span><strong>Arabic:</strong> Native</span>
+                <span><strong>French:</strong> Advanced</span>
+                <span><strong>English:</strong> Professional</span>
+                <span><strong>Spanish:</strong> Beginner</span>
+            </div>
+        </div>
+
+        <!-- Volunteer Experience -->
+        <div class="mb-4">
+            <h3 class="section-title">VOLUNTEER EXPERIENCE</h3>
+            <div class="mb-3">
+                <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-semibold text-gray-900">Technical Volunteer | School of AI (SOAI), Algiers</h4>
+                    <span class="text-sm text-gray-600 italic">2023–2024</span>
+                </div>
+                <div class="pl-4">
+                    <div class="bullet-point">Contributed to AI community events and hackathon organization</div>
+                    <div class="bullet-point">Assisted in technical documentation and event logistics management</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <h4 class="font-semibold text-gray-900">Active Member | Google Developer Group (GDG) – ETIC Algiers</h4>
+                <div class="pl-4">
+                    <div class="bullet-point">Participated in developer workshops and community tech events</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

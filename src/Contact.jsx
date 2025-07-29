@@ -41,7 +41,7 @@ function Contact() {
       label: 'LinkedIn'
     },
     {
-      href: 'https://github.com/djihane-torchane',
+      href: 'https://github.com/djihane19',
       icon: 'fab fa-github',
       color: '#1B1F3B', // Midnight Indigo
       label: 'GitHub'
