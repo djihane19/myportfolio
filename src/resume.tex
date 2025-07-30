@@ -1,0 +1,108 @@
+% Setting up document class and packages
+\documentclass[11pt,a4paper,sans]{moderncv}
+\moderncvstyle{casual}
+\moderncvcolor{blue}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[scale=0.75]{geometry}
+\usepackage{noto}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+% Defining personal data
+\name{Djihane}{Torchane}
+\title{\large Full-Stack Developer | AI Engineer | Data Scientist}
+\email{kd\_torchane@esi.dz}
+\phone[mobile]{+213 781 038 183}
+\social[linkedin][www.linkedin.com/in/dji-hane-b92818276]{dji-hane-b92818276}
+\social[github][github.com/djihane19]{djihane19}
+
+% Customizing list styles
+\setlist[itemize]{leftmargin=*, itemsep=0.2em, topsep=0.2em}
+
+\begin{document}
+\makecvtitle
+
+% Professional Summary
+\section{Professional Summary}
+\cvitem{}{
+Results-driven Full-Stack Developer and AI Engineer with 2+ years of experience building scalable web applications and machine learning solutions. Proven expertise in React.js, Node.js, Django, and Python for developing enterprise-grade banking systems and predictive AI models. Strong background in database design, API development, and cloud technologies. Seeking to leverage technical skills and innovative problem-solving abilities in a challenging full-stack or AI development role.
+}
+
+% Technical Skills
+\section{Technical Skills}
+\cvitem{Programming Languages}{\small Python, JavaScript, SQL, R, PHP}
+\cvitem{Frontend Technologies}{\small React.js, HTML5, CSS3, Bootstrap, Responsive Design}
+\cvitem{Backend Frameworks}{\small Node.js, Express.js, Django, FastAPI, Laravel}
+\cvitem{Databases}{\small PostgreSQL, MongoDB, MySQL, Firebase, Supabase}
+\cvitem{Machine Learning}{\small scikit-learn, TensorFlow, LightGBM, Pandas, NumPy}
+\cvitem{Cloud \& Tools}{\small Git, GitHub, Agile/Scrum, Streamlit, Figma, Clerk Authentication}
+\cvitem{Specialized Skills}{\small REST APIs, JWT Authentication, RBAC, Microservices, Data Visualization}
+
+% Professional Experience
+\section{Professional Experience}
+\cventry{October 2024 -- June 2025}{Full-Stack Developer}{Finoutsource}{Core Banking System}{}{\begin{itemize}
+\item Architected and developed comprehensive core banking system using React.js, Django, and PostgreSQL
+\item Built 15+ secure REST APIs for account management, transactions, and loan processing with JWT authentication and RBAC
+\item Designed normalized relational database schemas following banking industry standards
+\item Implemented Agile methodology with GitHub Projects, delivering features 20\% ahead of schedule
+\end{itemize}}
+
+% Key Projects
+\section{Key Projects}
+\cventry{April 2025}{Fraud Detection System}{Machine Learning Project}{}{}{\begin{itemize}
+\item Developed ML pipeline achieving 94\% accuracy in detecting fraudulent transactions using LightGBM on PaySim dataset
+\item Applied advanced feature engineering and stratified K-Fold validation techniques
+\item Evaluated model performance using precision-recall curves, AUC metrics, and confusion matrices
+\end{itemize}}
+\cventry{March 2025}{Vera Atelier E-commerce Platform}{Full-Stack Development}{}{}{\begin{itemize}
+\item Built responsive fashion e-commerce website with React.js and Supabase backend
+\item Developed admin dashboard with real-time inventory management and sales analytics
+\item Integrated dynamic product catalog with search functionality and mobile-optimized checkout
+\end{itemize}}
+\cventry{February 2025}{Healthcare Prediction Web Application}{AI/ML Project}{}{}{\begin{itemize}
+\item Created multi-disease prediction system for diabetes, heart disease, and Parkinson's using scikit-learn
+\item Deployed production-ready application with Streamlit UI, serving 500+ predictions monthly
+\item Implemented data preprocessing pipeline with 89\% model accuracy across all conditions
+\end{itemize}}
+\cventry{Independent Project}{Personal Blog Website}{Full-Stack Development}{}{}{\begin{itemize}
+\item Built complete blogging platform from scratch using React.js, Express.js, and MongoDB
+\item Implemented Clerk authentication system for secure user management and access control
+\item Developed responsive design with rich text editor, comment system, and content management features
+\item Created RESTful API architecture with full CRUD operations for posts, users, and comments
+\end{itemize}}
+
+% Education
+\section{Education}
+\cventry{2020 -- 2025}{Bachelor of Engineering in Information Systems}{\'Ecole nationale Sup\'erieure d'Informatique (ESI), Algiers}{}{}{\begin{itemize}
+\item Relevant Coursework: Data Structures, Algorithms, Database Systems, Software Engineering, Machine Learning
+\end{itemize}}
+
+% Certifications
+\section{Certifications}
+\cvlistitem{Machine Learning Specialization -- DeepLearning.AI (Coursera)}
+\cvlistitem{Meta Front-End Developer Professional Certificate -- Meta (Coursera)}
+\cvlistitem{Full-Stack Development -- 1M Arab Coders Initiative}
+
+% Additional Projects
+\section{Additional Projects}
+\cvlistitem{MERN E-commerce Platform | Full-stack application with MongoDB, Express.js, React, Node.js}
+\cvlistitem{Financial Sentiment Analysis | Kaggle competition project analyzing market sentiment data}
+\cvlistitem{COVID Hospital Information System | Responsive web platform for Hospital of Amizour, B\'ejaia}
+
+% Languages
+\section{Languages}
+\cvitem{}{\small Arabic: Native, French: Advanced, English: Professional, Spanish: Beginner}
+
+% Volunteer Experience
+\section{Volunteer Experience}
+\cventry{2023 -- 2024}{Technical Volunteer}{School of AI (SOAI), Algiers}{}{}{\begin{itemize}
+\item Contributed to AI community events and hackathon organization
+\item Assisted in technical documentation and event logistics management
+\end{itemize}}
+\cventry{}{Active Member}{Google Developer Group (GDG) -- ETIC Algiers}{}{}{\begin{itemize}
+\item Participated in developer workshops and community tech events
+\end{itemize}}
+
+\end{document}

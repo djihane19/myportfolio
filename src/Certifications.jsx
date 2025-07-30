@@ -147,6 +147,7 @@ function Certifications() {
       marginBottom: '1.5rem'
     },
     viewButton: {
+      textDecoration:'none',
       border: `1px solid #4FD1FF`, // Electric Blue
       color: '#4FD1FF', // Electric Blue
       backgroundColor: 'transparent',

@@ -133,6 +133,7 @@ function Projects() {
       fontSize: '0.875rem'
     },
     detailsBtn: {
+      textDecoration:'none',
       border: '1px solid #4FD1FF', // Electric Blue
       color: '#4FD1FF', // Electric Blue
       backgroundColor: 'transparent',

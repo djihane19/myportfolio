@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LanguageContext } from './LanguageContext';
 import translations from './translations';
+import html2pdf from 'html2pdf.js';
 
 function Navbar() {
   const { language, toggleLanguage } = useContext(LanguageContext);
@@ -10,6 +11,81 @@ function Navbar() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleDownloadResume = async (e) => {
+    e.preventDefault();
+    try {
+      // Select HTML file based on language
+      const htmlFile = language === 'fr' ? './port_fr.html' : './port.html';
+      const response = await fetch(htmlFile);
+      if (!response.ok) throw new Error(`Failed to fetch ${htmlFile}`);
+
+      const htmlContent = await response.text();
+
+      // Create a hidden container for rendering
+      const container = document.createElement('div');
+      container.style.position = 'absolute';
+      container.style.left = '-9999px';
+      container.style.width = '8.5in';
+      container.style.padding = '0.5in';
+      container.style.background = '#f9fafb'; // Match bg-gray-50
+      container.innerHTML = htmlContent;
+
+      // Append to DOM to ensure styles load
+      document.body.appendChild(container);
+
+      // Ensure external styles and fonts are loaded
+      const styleLinks = [
+        'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
+        'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css',
+        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+      ];
+
+      // Wait for styles to load
+      await Promise.all(styleLinks.map(src => new Promise((resolve) => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = src;
+        link.crossOrigin = 'anonymous';
+        link.onload = resolve;
+        link.onerror = () => resolve(); // Continue even if a resource fails
+        container.appendChild(link);
+      })));
+
+      // Add delay to ensure fonts and icons render
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Configure html2pdf options
+      const opt = {
+        margin: [0.5, 0.5, 0.5, 0.5],
+        filename: `Djihane_Torchane_Resume_${language}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true, 
+          logging: true,
+          width: 816, // 8.5in at 96dpi
+          windowWidth: 816,
+          scrollX: 0,
+          scrollY: 0
+        },
+        jsPDF: { 
+          unit: 'in', 
+          format: 'letter', 
+          orientation: 'portrait' 
+        }
+      };
+
+      // Generate and download PDF
+      await html2pdf().from(container).set(opt).save();
+
+      // Clean up
+      document.body.removeChild(container);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please check your connection or try again later.');
+    }
   };
 
   const navItems = [
@@ -28,15 +104,15 @@ function Navbar() {
       position: 'sticky',
       top: 0,
       zIndex: 1030,
-      backgroundColor: '#1B1F3B', // Midnight Indigo
+      backgroundColor: '#1B1F3B',
       boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
     },
     navbar: {
       padding: '0.75rem 1rem',
-      backgroundColor: '#1B1F3B' // Midnight Indigo
+      backgroundColor: '#1B1F3B'
     },
     brand: {
-      background: 'linear-gradient(90deg, #4FD1FF, #22D3EE)', // Electric Blue to Cyan Glow
+      background: 'linear-gradient(90deg, #007bff, #00d4ff)',
       WebkitBackgroundClip: 'text',
       backgroundClip: 'text',
       color: 'transparent',
@@ -49,18 +125,18 @@ function Navbar() {
       opacity: 0.9
     },
     navLink: {
-      color: '#CBD5E1', // Cool Gray
+      color: '#CBD5E1',
       fontWeight: 500,
       padding: '0.5rem 1rem',
       position: 'relative',
       transition: 'all 0.3s ease',
-      textDecoration:'none'
+      textDecoration: 'none'
     },
     navLinkHover: {
-      color: '#4FD1FF' // Electric Blue
+      color: '#00d4ff'
     },
     navLinkActive: {
-      color: '#22D3EE', // Cyan Glow
+      color: '#00d4ff',
       fontWeight: 600
     },
     navLinkUnderline: {
@@ -69,7 +145,7 @@ function Navbar() {
       left: '1rem',
       width: 'calc(100% - 2rem)',
       height: '2px',
-      backgroundColor: '#4FD1FF', // Electric Blue
+      backgroundColor: '#00d4ff',
       transform: 'scaleX(0)',
       transformOrigin: 'left',
       transition: 'transform 0.3s ease'
@@ -78,26 +154,26 @@ function Navbar() {
       transform: 'scaleX(1)'
     },
     dropdownToggle: {
-      color: '#CBD5E1', // Cool Gray
+      color: '#CBD5E1',
       fontWeight: 500,
       padding: '0.5rem 1rem'
     },
     dropdownMenu: {
-      backgroundColor: '#1B1F3B', // Midnight Indigo
-      border: '1px solid rgba(79, 209, 255, 0.2)' // Electric Blue with opacity
+      backgroundColor: '#1B1F3B',
+      border: '1px solid rgba(0, 123, 255, 0.2)'
     },
     dropdownItem: {
-      color: '#CBD5E1', // Cool Gray
+      color: '#CBD5E1',
       padding: '0.5rem 1rem',
       transition: 'all 0.2s ease'
     },
     dropdownItemHover: {
-      backgroundColor: 'rgba(79, 209, 255, 0.1)', // Electric Blue with opacity
-      color: '#4FD1FF' // Electric Blue
+      backgroundColor: 'rgba(0, 123, 255, 0.1)',
+      color: '#00d4ff'
     },
     resumeBtn: {
-      backgroundColor: '#22D3EE', // Cyan Glow
-      color: '#1B1F3B', // Midnight Indigo
+      background: 'linear-gradient(90deg, #007bff, #00d4ff)',
+      color: '#1B1F3B',
       border: 'none',
       fontWeight: 500,
       padding: '0.5rem 1rem',
@@ -106,21 +182,21 @@ function Navbar() {
       marginLeft: '1rem'
     },
     resumeBtnHover: {
-      backgroundColor: '#4FD1FF', // Electric Blue
-      boxShadow: '0 0 15px rgba(79, 209, 255, 0.5)'
+      background: 'linear-gradient(90deg, #0056b3, #0096cc)',
+      boxShadow: '0 0 15px rgba(0, 123, 255, 0.5)'
     },
     resumeBtnOutline: {
-      border: '1px solid #4FD1FF', // Electric Blue
-      color: '#4FD1FF', // Electric Blue
+      border: '1px solid #00d4ff',
+      color: '#00d4ff',
       backgroundColor: 'transparent'
     },
     resumeBtnOutlineHover: {
-      backgroundColor: 'rgba(79, 209, 255, 0.1)' // Electric Blue with opacity
+      backgroundColor: 'rgba(0, 123, 255, 0.1)'
     },
     toggler: {
       border: 'none',
       padding: '0.5rem',
-      color: '#CBD5E1' // Cool Gray
+      color: '#CBD5E1'
     },
     togglerIcon: {
       backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28203, 213, 225, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")`
@@ -130,7 +206,7 @@ function Navbar() {
   return (
     <header style={styles.header}>
       <nav className="navbar navbar-expand-md" style={styles.navbar}>
-        <div className="container-fluid">
+        <div class="container-fluid">
           <Link 
             to="/" 
             className="navbar-brand" 
@@ -236,10 +312,10 @@ function Navbar() {
               
               <li className="nav-item d-md-none">
                 <a
-                  href="/resume.pdf"
+                  href="#"
                   style={styles.resumeBtnOutline}
                   className="btn btn-sm"
-                  download
+                  onClick={handleDownloadResume}
                   onMouseEnter={(e) => Object.assign(e.target.style, styles.resumeBtnOutlineHover)}
                   onMouseLeave={(e) => Object.assign(e.target.style, styles.resumeBtnOutline)}
                 >
@@ -250,10 +326,10 @@ function Navbar() {
               
               <li className="nav-item d-none d-md-block">
                 <a
-                  href="/resume.pdf"
+                  href="#"
                   style={styles.resumeBtn}
                   className="btn btn-sm"
-                  download
+                  onClick={handleDownloadResume}
                   onMouseEnter={(e) => Object.assign(e.target.style, styles.resumeBtnHover)}
                   onMouseLeave={(e) => Object.assign(e.target.style, styles.resumeBtn)}
                 >

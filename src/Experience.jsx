@@ -130,10 +130,9 @@ function Experience() {
     },
     taskItem: {
       color: 'rgba(203, 213, 225, 0.8)', // Cool Gray with opacity
-      paddingLeft: 0,
       border: 'none',
       position: 'relative',
-      paddingLeft: '1.25rem'
+      paddingLeft: '1.25rem',
     },
     taskBullet: {
       position: 'absolute',

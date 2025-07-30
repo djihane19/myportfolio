@@ -143,26 +143,27 @@ function Hero() {
       position: 'absolute',
       bottom: '30px',
       right: '30px',
-      backgroundColor: '#F9EBC7',
+      background: 'linear-gradient(45deg, #4FD1FF, #22D3EE)',
       borderRadius: '50%',
-      padding: '0.5rem',
+      padding: '0.75rem',
       boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
       zIndex: 3
     },
     badgeIcon: {
-      backgroundColor: '#22D3EE',
+      background: 'linear-gradient(45deg, #F87171, #F9EBC7)',
       width: '3.5rem',
       height: '3.5rem',
       borderRadius: '50%',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      transition: 'all 0.3s ease'
     },
     floatingIcon: {
       position: 'absolute',
       zIndex: 1,
       opacity: 0.8,
-      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+      filter: 'drop-shadow(0 2px 4px rgba(11, 55, 121, 1))'
     }
   };
 
@@ -195,8 +196,32 @@ function Hero() {
       scale: 1,
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.8,  
         type: 'spring'
+      }
+    }
+  };
+
+  const badgeVariants = {
+    initial: {
+      scale: 1
+    },
+    animate: {
+      scale: [1, 1.1, 1],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: 'easeInOut'
+      }
+    },
+    hover: {
+      scale: 1.2,
+      rotate: 360,
+      boxShadow: '0 8px 20px rgba(79, 209, 255, 0.6)',
+      background: 'linear-gradient(45deg, #22D3EE, #4FD1FF)',
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut'
       }
     }
   };
@@ -287,11 +312,20 @@ function Hero() {
               </div>
               
               {/* Badge */}
-              <div style={styles.badge}>
-                <div style={styles.badgeIcon}>
+              <motion.div 
+                style={styles.badge}
+                initial="initial"
+                animate="animate"
+                variants={badgeVariants}
+              >
+                <motion.div 
+                  style={styles.badgeIcon}
+                  variants={badgeVariants}
+                  whileHover="hover"
+                >
                   <i className="fas fa-code" style={{ color: '#1B1F3B', fontSize: '1.5rem' }}></i>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
