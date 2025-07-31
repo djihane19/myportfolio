@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djihane Torchane - CV Professionnel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.4;
+            color: #1f2937;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 10px;
+        }
+        
+        .resume-container {
+            max-width: 8.27in; /* A4 width */
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 0.5in;
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(90deg, #0056b3, #0096cc);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+        
+        .section-title {
+            color: #1e40af;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 2px solid #3b82f6;
+            page-break-after: avoid;
+        }
+        
+        .section {
+            margin-bottom: 0.8rem;
+            /* Removed page-break-inside: avoid to allow sections to split */
+        }
+        
+        .contact-link {
+            color: #1e40af;
+            text-decoration: none;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .skill-tag {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.1rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            margin-right: 0.4rem;
+            margin-bottom: 0.2rem;
+            display: inline-block;
+        }
+        
+        .project-title {
+            color: #1e40af;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .bullet-point {
+            margin-bottom: 0.3rem;
+            position: relative;
+            padding-left: 1rem;
+            font-size: 0.8rem;
+            page-break-inside: auto; /* Allow bullet points to break across pages */
+        }
+        
+        .bullet-point::before {
+            content: "•";
+            color: #3b82f6;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.4rem;
+            page-break-after: avoid; /* Prevent breaking right after headers */
+        }
+        
+        .languages-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            page-break-inside: auto; /* Allow language items to break */
+        }
+        
+        .experience-item, .project-item, .education-item {
+            margin-bottom: 0.75rem;
+            page-break-inside: auto; /* Allow items to break across pages */
+        }
+        
+        /* Ensure lists within items can break naturally */
+        .experience-item > div, .project-item > div, .education-item > div {
+            orphans: 2; /* Minimum 2 lines at bottom of page */
+            widows: 2;  /* Minimum 2 lines at top of page */
+        }
+        
+        @media print {
+            body { 
+                margin: 0; 
+                padding: 0;
+                background: white;
+            }
+            
+            .resume-container { 
+                padding: 0.5in; 
+                box-shadow: none;
+                max-width: none;
+                width: 100%;
+                margin: 0;
+            }
+            
+            .download-btn { 
+                display: none !important; 
+            }
+            
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+            }
+            
+            .section-title {
+                page-break-after: avoid;
+            }
+            
+            /* Ensure paragraphs and lists can break naturally */
+            p, ul, li {
+                page-break-inside: auto;
+                orphans: 2;
+                widows: 2;
+            }
+        }
+        
+        .pdf-safe {
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        @page {
+            size: letter;
+            margin: 0.5in;
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="downloadPDF()">
+        <i class="fas fa-download" style="margin-right: 8px;"></i>
+        Télécharger le PDF
+    </button>
+    
+    <div class="resume-container pdf-safe" id="resume-content">
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <h1 style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-bottom: 0.4rem;">DJIHANE TORCHANE</h1>
+            <h2 style="font-size: 1rem; font-weight: 500; color: #2563eb; margin-bottom: 0.75rem;">Développeuse Full-Stack | Ingénieure en IA | Scientifique des Données</h2>
+            <div class="contact-info">
+                <span><i class="fas fa-envelope" style="color: #2563eb; margin-right: 4px;"></i> kd_torchane@esi.dz</span>
+                <span><i class="fas fa-phone" style="color: #2563eb; margin-right: 4px;"></i> +213 781 038 183</span>
+                <span><i class="fab fa-linkedin" style="color: #2563eb; margin-right: 4px;"></i> <a href="https://www.linkedin.com/in/dji-hane-b92818276" class="contact-link">LinkedIn</a></span>
+                <span><i class="fab fa-github" style="color: #2563eb; margin-right: 4px;"></i> <a href="https://github.com/djihane19" class="contact-link">GitHub</a></span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">RÉSUMÉ PROFESSIONNEL</h3>
+            <p style="color: #374151; font-size: 0.8rem;">
+                Développeuse Full-Stack et Ingénieure en IA orientée résultats, avec plus de 2 ans d'expérience dans la création d'applications web évolutives et de solutions d'apprentissage automatique. Expertise confirmée en React.js, Node.js, Django et Python pour le développement de systèmes bancaires de niveau entreprise et de modèles d'IA prédictifs. Solide expérience en conception de bases de données, développement d'API et technologies cloud. Je cherche à mettre à profit mes compétences techniques et mes capacités de résolution de problèmes innovantes dans un rôle de développement full-stack ou en IA stimulant.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">COMPÉTENCES TECHNIQUES</h3>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 0.4rem;">
+                <div>
+                    <span style="font-weight: 500; color: #1f2937; font-size: 0.8rem;">Langages de programmation :</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+                <div>
+                    <span style="font-weight: 500; color: #1f2937; font-size: 0.8rem;">Technologies Frontend :</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">Conception responsive</span>
+                </div>
+                <div>
+                    <span style="font-weight: 500; color: #1f2937; font-size: 0.8rem;">Frameworks Backend :</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Laravel</span>
+                </div>
+                <div>
+                    <span style="font-weight: 500; color: #1f2937; font-size: 0.8rem;">Bases de données :</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Supabase</span>
+                </div>
+                <div>
+                    <span style="font-weight: 500; color: #1f2937; font-size: 0.8rem;">Apprentissage automatique :</span>
+                    <span class="skill-tag">scikit-learn</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">LightGBM</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+                <div>
+                    <span style="font-weight: 500; color: #1f2937; font-size: 0.8rem;">Cloud & Outils :</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Agile/Scrum</span>
+                    <span class="skill-tag">Streamlit</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Authentification Clerk</span>
+                </div>
+                <div>
+                    <span style="font-weight: 500; color: #1f2937; font-size: 0.8rem;">Compétences spécialisées :</span>
+                    <span class="skill-tag">API REST</span>
+                    <span class="skill-tag">Authentification JWT</span>
+                    <span class="skill-tag">RBAC</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">Visualisation de données</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">EXPÉRIENCE PROFESSIONNELLE</h3>
+            <div class="experience-item">
+                <div class="project-header">
+                    <div>
+                        <h4 style="font-weight: 600; color: #111827; font-size: 0.9rem;">Développeuse Full-Stack | Finoutsource</h4>
+                    </div>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">Octobre 2024 – Juin 2025</span>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Conception et développement d’un système bancaire complet en utilisant React.js, Django et PostgreSQL</div>
+                    <div class="bullet-point">Création de plus de 15 API REST sécurisées pour la gestion des comptes, des transactions et des prêts avec authentification JWT et RBAC</div>
+                    <div class="bullet-point">Conception de schémas de bases de données relationnelles normalisées conformes aux normes bancaires</div>
+                    <div class="bullet-point">Mise en œuvre de la méthodologie Agile avec GitHub Projects, livrant les fonctionnalités avec 20 % d’avance sur le calendrier</div>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="project-header">
+                    <div>
+                        <h4 style="font-weight: 600; color: #111827; font-size: 0.9rem;">Développeuse Full-Stack | Gica</h4>
+                    </div>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">Juillet 2023 – Septembre 2023</span>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Conception et développement d’un système complet de gestion des employés en utilisant React.js, Node.js et MySQL</div>
+                    <div class="bullet-point">Création d’API REST sécurisées pour la gestion des employés et le système de notifications avec authentification JWT</div>
+                    <div class="bullet-point">Conception d’un prototype d’interface utilisateur sur Figma pour le site web</div>
+                    <div class="bullet-point">Mise en œuvre d’une méthodologie Agile pour le prototypage</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">PROJETS CLÉS</h3>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <h4 class="project-title">Système de Détection de Fraude | Projet d’Apprentissage Automatique</h4>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">Avril 2025</span>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Développement d’un pipeline ML atteignant 94 % de précision dans la détection des transactions frauduleuses en utilisant LightGBM sur l’ensemble de données PaySim</div>
+                    <div class="bullet-point">Application de techniques avancées d’ingénierie des caractéristiques et de validation stratifiée K-Fold</div>
+                    <div class="bullet-point">Évaluation des performances du modèle à l’aide de courbes précision-rappel, métriques AUC et matrices de confusion</div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h4 class="project-title">Plateforme E-commerce Vera Atelier | Développement Full-Stack</h4>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">Mars 2025</span>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Création d’un site e-commerce de mode responsive avec React.js et backend Supabase</div>
+                    <div class="bullet-point">Développement d’un tableau de bord administratif avec gestion d’inventaire en temps réel et analyses des ventes</div>
+                    <div class="bullet-point">Intégration d’un catalogue de produits dynamique avec fonction de recherche et paiement optimisé pour mobile</div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h4 class="project-title">Application Web de Prédiction Médicale | Projet IA/ML</h4>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">Février 2025</span>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Création d’un système de prédiction multi-maladies pour le diabète, les maladies cardiaques et Parkinson en utilisant scikit-learn</div>
+                    <div class="bullet-point">Déploiement d’une application prête pour la production avec une interface Streamlit, servant plus de 500 prédictions mensuelles</div>
+                    <div class="bullet-point">Mise en œuvre d’un pipeline de prétraitement des données avec une précision de modèle de 89 % pour toutes les conditions</div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h4 class="project-title">Site Web de Blog Personnel | Développement Full-Stack</h4>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">Projet Indépendant</span>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Création d’une plateforme de blog complète à partir de zéro en utilisant React.js, Express.js et MongoDB</div>
+                    <div class="bullet-point">Mise en œuvre d’un système d’authentification Clerk pour une gestion sécurisée des utilisateurs et un contrôle d’accès</div>
+                    <div class="bullet-point">Développement d’un design responsive avec un éditeur de texte enrichi, un système de commentaires et des fonctionnalités de gestion de contenu</div>
+                    <div class="bullet-point">Création d’une architecture API RESTful avec des opérations CRUD complètes pour les articles, les utilisateurs et les commentaires</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">FORMATION</h3>
+            <div class="education-item">
+                <div class="project-header">
+                    <div>
+                        <h4 style="font-weight: 600; color: #111827; font-size: 0.9rem;">Licence en Ingénierie des Systèmes d’Information</h4>
+                        <p style="color: #374151; font-size: 0.8rem;">École nationale Supérieure d'Informatique (ESI), Alger</p>
+                        <p style="font-size: 0.75rem; color: #6b7280;"><strong>Cours pertinents :</strong> Structures de Données, Algorithmes, Systèmes de Bases de Données, Génie Logiciel, Apprentissage Automatique</p>
+                    </div>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">2020 – 2025</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">CERTIFICATIONS</h3>
+            <div style="padding-left: 1rem;">
+                <div class="bullet-point"><strong>Spécialisation en Apprentissage Automatique</strong> – DeepLearning.AI (Coursera)</div>
+                <div class="bullet-point"><strong>Certificat Professionnel de Développeur Front-End Meta</strong> – Meta (Coursera)</div>
+                <div class="bullet-point"><strong>Développement Full-Stack</strong> – Initiative 1M Arab Coders</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">PROJETS SUPPLÉMENTAIRES</h3>
+            <div style="padding-left: 1rem;">
+                <div class="bullet-point"><strong>Plateforme E-commerce MERN</strong> | Application full-stack avec MongoDB, Express.js, React, Node.js</div>
+                <div class="bullet-point"><strong>Analyse de Sentiment Financier</strong> | Projet de compétition Kaggle analysant les données de sentiment du marché</div>
+                <div class="bullet-point"><strong>Système d’Information Hospitalier COVID</strong> | Plateforme web responsive pour l’Hôpital d’Amizour, Béjaïa</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">LANGUES</h3>
+            <div class="languages-container">
+                <span><strong>Arabe :</strong> Natif</span>
+                <span><strong>Français :</strong> Avancé</span>
+                <span><strong>Anglais :</strong> Professionnel</span>
+                <span><strong>Espagnol :</strong> Débutant</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">EXPÉRIENCE BÉNÉVOLE</h3>
+            <div style="margin-bottom: 0.5rem;">
+                <div class="project-header">
+                    <h4 style="font-weight: 600; color: #111827; font-size: 0.9rem;">Bénévole Technique | School of AI (SOAI), Alger</h4>
+                    <span style="font-size: 0.75rem; color: #6b7280; font-style: italic;">2023–2024</span>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Contribution à des événements communautaires sur l’IA et organisation de hackathons</div>
+                    <div class="bullet-point">Assistance dans la documentation technique et la gestion logistique des événements</div>
+                </div>
+            </div>
+            <div style="margin-bottom: 0.5rem;">
+                <h4 style="font-weight: 600; color: #111827; font-size: 0.9rem;">Membre Actif | Google Developer Group (GDG) – ETIC Alger</h4>
+                <div style="padding-left: 1rem;">
+                    <div class="bullet-point">Participation à des ateliers de développement et à des événements technologiques communautaires</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function downloadPDF() {
+            const element = document.getElementById('resume-content');
+            const button = document.querySelector('.download-btn');
+            
+            button.style.display = 'none';
+            
+            const opt = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: 'Djihane_Torchane_CV_FR.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true,
+                    logging: false
+                },
+                jsPDF: { 
+                    unit: 'in', 
+                    format: 'letter', 
+                    orientation: 'portrait'
+                },
+                pagebreak: { mode: ['css', 'legacy'] } /* Removed 'avoid-all' to allow natural breaks */
+            };
+
+            try {
+                await html2pdf().from(element).set(opt).save();
+                console.log('PDF généré avec succès');
+            } catch (error) {
+                console.error('Erreur lors de la génération du PDF:', error);
+                alert('Erreur lors de la génération du PDF. Veuillez réessayer.');
+            } finally {
+                button.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { LanguageContext } from './LanguageContext';
+import translations from './translations';
 
 function About() {
+  const { language } = useContext(LanguageContext);
   const [ref, inView] = useInView({
     threshold: 0.1, 
     triggerOnce: true
   });
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -45,16 +47,15 @@ function About() {
     }
   };
 
-  // Inline styles using your color palette
   const styles = {
     section: {
-      backgroundColor: '#F9EBC7', // Warm Sand
+      backgroundColor: '#F9EBC7',
       padding: '5rem 0',
       position: 'relative',
       overflow: 'hidden'
     },
     title: {
-      color: '#1B1F3B', // Midnight Indigo
+      color: '#1B1F3B',
       position: 'relative',
       display: 'inline-block',
       marginBottom: '2rem',
@@ -65,18 +66,18 @@ function About() {
       left: 0,
       width: '80px',
       height: '4px',
-      background: 'linear-gradient(90deg, #4FD1FF, #22D3EE)', // Electric Blue to Cyan Glow
+      background: 'linear-gradient(90deg, #4FD1FF, #22D3EE)',
       borderRadius: '2px'
     },
     text: {
-      color: '#1B1F3B', // Midnight Indigo
+      color: '#1B1F3B',
       fontSize: '1.1rem',
       lineHeight: 1.7,
       marginBottom: '1.5rem'
     },
     primaryButton: {
-      backgroundColor: '#22D3EE', // Cyan Glow
-      color: '#1B1F3B', // Midnight Indigo
+      backgroundColor: '#22D3EE',
+      color: '#1B1F3B',
       border: 'none',
       padding: '0.75rem 1.5rem',
       borderRadius: '50px',
@@ -84,13 +85,13 @@ function About() {
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
-      textDecoration:'none',
+      textDecoration: 'none',
       transition: 'all 0.3s ease',
     },
     secondaryButton: {
-      textDecoration:'none',
-      backgroundColor: '#1B1F3B', // Midnight Indigo
-      color: '#F9EBC7', // Warm Sand
+      textDecoration: 'none',
+      backgroundColor: '#1B1F3B',
+      color: '#F9EBC7',
       border: 'none',
       padding: '0.75rem 1.5rem',
       borderRadius: '50px',
@@ -101,8 +102,8 @@ function About() {
       transition: 'all 0.3s ease',
     },
     successButton: {
-      backgroundColor: '#4FD1FF', // Electric Blue
-      color: '#1B1F3B', // Midnight Indigo
+      backgroundColor: '#4FD1FF',
+      color: '#1B1F3B',
       border: 'none',
       padding: '0.75rem 1.5rem',
       borderRadius: '50px',
@@ -113,30 +114,29 @@ function About() {
       transition: 'all 0.3s ease',
     },
     card: {
-      backgroundColor: '#1B1F3B', // Midnight Indigo
+      backgroundColor: '#1B1F3B',
       border: 'none',
       borderRadius: '12px',
       boxShadow: '0 10px 30px rgba(27, 31, 59, 0.2)',
       height: '100%'
     },
     cardTitle: {
-      color: '#4FD1FF', // Electric Blue
+      color: '#4FD1FF',
       marginBottom: '1.5rem',
       background: 'linear-gradient(90deg, #4FD1FF, #22D3EE)',
       WebkitBackgroundClip: 'text',
       backgroundClip: 'text',
-      
       display: 'inline-block',
     },
     infoItem: {
-      color: '#CBD5E1', // Cool Gray
+      color: '#CBD5E1',
       marginBottom: '1rem',
       display: 'flex',
       alignItems: 'flex-start',
       gap: '0.75rem'
     },
     infoIcon: {
-      color: '#22D3EE', // Cyan Glow
+      color: '#22D3EE',
       marginTop: '0.2rem',
       flexShrink: 0
     }
@@ -159,7 +159,7 @@ function About() {
             }
           }}
         >
-          À Propos
+          {translations[language].about.title}
           <motion.span 
             style={styles.titleUnderline}
             initial={{ scaleX: 0 }}
@@ -175,19 +175,15 @@ function About() {
             animate={inView ? "visible" : "hidden"}
             variants={containerVariants}
           >
-            <motion.p style={styles.text} variants={itemVariants}>
-              Créative et motivée, je suis une développeuse Full-Stack avec une solide formation en Ingénierie des Systèmes d'Information.
-              Je me spécialise dans la construction d'applications web évolutives, d'interfaces utilisateur intuitives et de systèmes alimentés par l'IA avec une touche humaine.
-            </motion.p>
-            
-            <motion.p style={styles.text} variants={itemVariants}>
-              Mon expérience couvre les plateformes bancaires, les outils de santé prédictifs et les systèmes hospitaliers internes —
-              toujours concentrée sur la livraison d'un code propre, la performance et l'impact utilisateur.
-            </motion.p>
-            
-            <motion.p style={styles.text} variants={itemVariants}>
-              Je m'épanouis dans les équipes Agile, j'aime Figma autant que FastAPI, et je reste obsédée par la résolution de problèmes réels en utilisant des technologies élégantes.
-            </motion.p>
+            {translations[language].about.paragraphs.map((paragraph, index) => (
+              <motion.p 
+                key={index}
+                style={styles.text}
+                variants={itemVariants}
+              >
+                {paragraph}
+              </motion.p>
+            ))}
             
             <motion.div 
               className="d-flex flex-wrap gap-3 mb-4"
@@ -205,7 +201,8 @@ function About() {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <i className="fab fa-linkedin-in"></i> LinkedIn
+                <i className="fab fa-linkedin-in"></i>
+                {translations[language].about.buttons.linkedin}
               </motion.a>
               
               <motion.a
@@ -218,12 +215,13 @@ function About() {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <i className="fab fa-github"></i> GitHub
+                <i className="fab fa-github"></i>
+                {translations[language].about.buttons.github}
               </motion.a>
               
               <motion.button
                 style={styles.successButton}
-                onClick={() => alert('Téléchargement du CV')}
+                onClick={() => alert(translations[language].about.buttons.download_cv)}
                 whileHover={{ 
                   backgroundColor: '#22D3EE',
                   boxShadow: '0 5px 15px rgba(34, 211, 238, 0.3)',
@@ -231,7 +229,8 @@ function About() {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <i className="fas fa-download"></i> Télécharger CV
+                <i className="fas fa-download"></i>
+                {translations[language].about.buttons.download_cv}
               </motion.button>
             </motion.div>
           </motion.div>
@@ -244,28 +243,28 @@ function About() {
           >
             <div style={styles.card} className="p-4">
               <h3 style={styles.cardTitle} className="fs-4 fw-semibold">
-                Informations Personnelles
+                {translations[language].about.personal_info.title}
               </h3>
               
               <div className="d-flex flex-column gap-3">
                 <div style={styles.infoItem}>
                   <i style={styles.infoIcon} className="fas fa-envelope"></i>
-                  <span>kd_torchane@esi.dz</span>
+                  <span>{translations[language].about.personal_info.email}</span>
                 </div>
                 
                 <div style={styles.infoItem}>
                   <i style={styles.infoIcon} className="fas fa-phone"></i>
-                  <span>+213 781 038 183</span>
+                  <span>{translations[language].about.personal_info.phone}</span>
                 </div>
                 
                 <div style={styles.infoItem}>
                   <i style={styles.infoIcon} className="fas fa-map-marker-alt"></i>
-                  <span>Algérie</span>
+                  <span>{translations[language].about.personal_info.location}</span>
                 </div>
                 
                 <div style={styles.infoItem}>
                   <i style={styles.infoIcon} className="fas fa-language"></i>
-                  <span>Arabe (natif), Français (avancé), Anglais (technique), Espagnol (débutant)</span>
+                  <span>{translations[language].about.personal_info.languages}</span>
                 </div>
               </div>
             </div>

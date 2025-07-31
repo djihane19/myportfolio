@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LanguageContext } from './LanguageContext';
 import translations from './translations';
-import html2pdf from 'html2pdf.js';
 
 function Navbar() {
   const { language, toggleLanguage } = useContext(LanguageContext);
@@ -13,79 +12,11 @@ function Navbar() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleDownloadResume = async (e) => {
+  // Fonction pour ouvrir le CV dans une nouvelle page
+  const handleViewResume = (e) => {
     e.preventDefault();
-    try {
-      // Select HTML file based on language
-      const htmlFile = language === 'fr' ? './port_fr.html' : './port.html';
-      const response = await fetch(htmlFile);
-      if (!response.ok) throw new Error(`Failed to fetch ${htmlFile}`);
-
-      const htmlContent = await response.text();
-
-      // Create a hidden container for rendering
-      const container = document.createElement('div');
-      container.style.position = 'absolute';
-      container.style.left = '-9999px';
-      container.style.width = '8.5in';
-      container.style.padding = '0.5in';
-      container.style.background = '#f9fafb'; // Match bg-gray-50
-      container.innerHTML = htmlContent;
-
-      // Append to DOM to ensure styles load
-      document.body.appendChild(container);
-
-      // Ensure external styles and fonts are loaded
-      const styleLinks = [
-        'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
-        'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
-      ];
-
-      // Wait for styles to load
-      await Promise.all(styleLinks.map(src => new Promise((resolve) => {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = src;
-        link.crossOrigin = 'anonymous';
-        link.onload = resolve;
-        link.onerror = () => resolve(); // Continue even if a resource fails
-        container.appendChild(link);
-      })));
-
-      // Add delay to ensure fonts and icons render
-      await new Promise(resolve => setTimeout(resolve, 500));
-
-      // Configure html2pdf options
-      const opt = {
-        margin: [0.5, 0.5, 0.5, 0.5],
-        filename: `Djihane_Torchane_Resume_${language}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
-          scale: 2, 
-          useCORS: true, 
-          logging: true,
-          width: 816, // 8.5in at 96dpi
-          windowWidth: 816,
-          scrollX: 0,
-          scrollY: 0
-        },
-        jsPDF: { 
-          unit: 'in', 
-          format: 'letter', 
-          orientation: 'portrait' 
-        }
-      };
-
-      // Generate and download PDF
-      await html2pdf().from(container).set(opt).save();
-
-      // Clean up
-      document.body.removeChild(container);
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Failed to generate PDF. Please check your connection or try again later.');
-    }
+    const resumeUrl = language === 'fr' ? './port_fr.html' : './port.html';
+    window.open(resumeUrl, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
   };
 
   const navItems = [
@@ -98,7 +29,7 @@ function Navbar() {
     { href: '/contact', label: translations[language].navbar.contact },
   ];
 
-  // Inline styles using your color palette
+  // Styles existants...
   const styles = {
     header: {
       position: 'sticky',
@@ -149,9 +80,6 @@ function Navbar() {
       transform: 'scaleX(0)',
       transformOrigin: 'left',
       transition: 'transform 0.3s ease'
-    },
-    navLinkUnderlineHover: {
-      transform: 'scaleX(1)'
     },
     dropdownToggle: {
       color: '#CBD5E1',
@@ -206,7 +134,7 @@ function Navbar() {
   return (
     <header style={styles.header}>
       <nav className="navbar navbar-expand-md" style={styles.navbar}>
-        <div class="container-fluid">
+        <div className="container-fluid">
           <Link 
             to="/" 
             className="navbar-brand" 
@@ -245,12 +173,14 @@ function Navbar() {
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.color = styles.navLinkHover.color;
-                      e.target.querySelector('.underline').style.transform = 'scaleX(1)';
+                      const underline = e.target.querySelector('.underline');
+                      if (underline) underline.style.transform = 'scaleX(1)';
                     }}
                     onMouseLeave={(e) => {
                       e.target.style.color = activeLink === item.href ? styles.navLinkActive.color : styles.navLink.color;
                       if (activeLink !== item.href) {
-                        e.target.querySelector('.underline').style.transform = 'scaleX(0)';
+                        const underline = e.target.querySelector('.underline');
+                        if (underline) underline.style.transform = 'scaleX(0)';
                       }
                     }}
                   >
@@ -310,31 +240,33 @@ function Navbar() {
                 </ul>
               </li>
               
+              {/* Version mobile */}
               <li className="nav-item d-md-none">
                 <a
                   href="#"
                   style={styles.resumeBtnOutline}
                   className="btn btn-sm"
-                  onClick={handleDownloadResume}
+                  onClick={handleViewResume}
                   onMouseEnter={(e) => Object.assign(e.target.style, styles.resumeBtnOutlineHover)}
                   onMouseLeave={(e) => Object.assign(e.target.style, styles.resumeBtnOutline)}
                 >
-                  <i className="fas fa-download me-2"></i>
-                  {translations[language].navbar.download_cv}
+                  <i className="fas fa-eye me-2"></i>
+                  {translations[language].navbar.view_cv}
                 </a>
               </li>
               
+              {/* Version desktop */}
               <li className="nav-item d-none d-md-block">
                 <a
                   href="#"
                   style={styles.resumeBtn}
                   className="btn btn-sm"
-                  onClick={handleDownloadResume}
+                  onClick={handleViewResume}
                   onMouseEnter={(e) => Object.assign(e.target.style, styles.resumeBtnHover)}
                   onMouseLeave={(e) => Object.assign(e.target.style, styles.resumeBtn)}
                 >
-                  <i className="fas fa-download me-2"></i>
-                  {translations[language].navbar.download_cv}
+                  <i className="fas fa-eye me-2"></i>
+                  {translations[language].navbar.view_cv}
                 </a>
               </li>
             </ul>

@@ -1,5 +1,6 @@
+
 {
-  "navbar": {
+   "navbar": {
     "brand": "jihan.CS",
     "home": "Accueil",
     "about": "À propos",
@@ -9,6 +10,7 @@
     "certifications": "Certifications",
     "contact": "Contact",
     "download_cv": "Télécharger CV",
+    "view_cv": "Voir CV",
     "language": "Langue"
   },
   "footer": {
@@ -245,5 +247,25 @@
         ]
       }
     ]
+  },
+  "about": {
+    "title": "À propos",
+    "paragraphs": [
+      "Créative et motivée, je suis une développeuse Full-Stack avec une solide formation en Ingénierie des Systèmes d'Information. Je me spécialise dans la construction d'applications web évolutives, d'interfaces utilisateur intuitives et de systèmes alimentés par l'IA avec une touche humaine.",
+      "Mon expérience couvre les plateformes bancaires, les outils de santé prédictifs et les systèmes hospitaliers internes — toujours concentrée sur la livraison d'un code propre, la performance et l'impact utilisateur.",
+      "Je m'épanouis dans les équipes Agile, j'aime Figma autant que FastAPI, et je reste obsédée par la résolution de problèmes réels en utilisant des technologies élégantes."
+    ],
+    "personal_info": {
+      "title": "Informations Personnelles",
+      "email": "kd_torchane@esi.dz",
+      "phone": "+213 781 038 183",
+      "location": "Algérie",
+      "languages": "Arabe (natif), Français (avancé), Anglais (technique), Espagnol (débutant)"
+    },
+    "buttons": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "download_cv": "Télécharger CV"
+    }
   }
 }

@@ -1,3 +1,4 @@
+
 {
   "navbar": {
     "brand": "jihan.CS",
@@ -9,6 +10,7 @@
     "certifications": "Certifications",
     "contact": "Contact",
     "download_cv": "Download CV",
+    "view_cv": "View Resume",
     "language": "Language"
   },
   "footer": {
@@ -246,5 +248,26 @@
         ]
       }
     ]
+  },
+  
+  "about": {
+    "title": "About",
+    "paragraphs": [
+      "Creative and driven, I am a Full-Stack Developer with a strong background in Information Systems Engineering. I specialize in building scalable web applications, intuitive user interfaces, and AI-powered systems with a human touch.",
+      "My experience spans banking platforms, predictive healthcare tools, and internal hospital systems — always focused on delivering clean code, performance, and user impact.",
+      "I thrive in Agile teams, love Figma as much as FastAPI, and remain obsessed with solving real-world problems using elegant technologies."
+    ],
+    "personal_info": {
+      "title": "Personal Information",
+      "email": "kd_torchane@esi.dz",
+      "phone": "+213 781 038 183",
+      "location": "Algeria",
+      "languages": "Arabic (native), French (advanced), English (technical), Spanish (beginner)"
+    },
+    "buttons": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "download_cv": "Download CV"
+    }
   }
 }

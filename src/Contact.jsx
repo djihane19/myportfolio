@@ -18,6 +18,8 @@ function Contact() {
     message: ''
   });
 
+  const [notification, setNotification] = useState({ message: '', type: '' });
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData(prev => ({
@@ -28,10 +30,19 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(translations[language].contact.alert_message);
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
+    const contactEmail = 'kd_torchane@esi.dz'  || 'fallback@example.com';
+    const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+    )}`;
+    window.location.href = mailtoLink;
+    setNotification({
+      message: translations[language].contact.success_message || 'Email client opened. Please send the email.',
+      type: 'success',
+    });
+    setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
   };
+
+  const contactEmail = 'kd_torchane@esi.dz' || 'fallback@example.com';
 
   const socialLinks = [
     {
@@ -47,7 +58,7 @@ function Contact() {
       label: 'GitHub'
     },
     {
-      href: 'mailto:kd_torchane@esi.dz',
+      href: `mailto:${contactEmail}`,
       icon: 'fas fa-envelope',
       color: '#F87171', // Salmon Red
       label: translations[language].contact.email_button
@@ -174,7 +185,24 @@ function Contact() {
       backgroundColor: `${color}20`, // Add opacity to the color
       color: '#FFFFFF',
       boxShadow: `0 5px 15px ${color}40`
-    })
+    }),
+    notification: {
+      padding: '1rem',
+      marginBottom: '1rem',
+      borderRadius: '8px',
+      textAlign: 'center',
+      fontWeight: 500,
+    },
+    notificationSuccess: {
+      backgroundColor: 'rgba(34, 211, 238, 0.1)', // Cyan Glow with opacity
+      color: '#22D3EE', // Cyan Glow
+      border: '1px solid #22D3EE',
+    },
+    notificationError: {
+      backgroundColor: 'rgba(248, 113, 113, 0.1)', // Salmon Red with opacity
+      color: '#F87171', // Salmon Red
+      border: '1px solid #F87171',
+    }
   };
 
   return (
@@ -225,6 +253,20 @@ function Contact() {
               >
                 {translations[language].contact.send_message_title}
               </motion.h3>
+
+              {notification.message && (
+                <motion.div
+                  style={{
+                    ...styles.notification,
+                    ...(notification.type === 'success' ? styles.notificationSuccess : styles.notificationError),
+                  }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {notification.message}
+                </motion.div>
+              )}
               
               <form onSubmit={handleSubmit}>
                 <motion.div 

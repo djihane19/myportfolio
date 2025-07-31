@@ -11,6 +11,7 @@ import Certifications from './Certifications.jsx';
 import Contact from './Contact.jsx';
 import Footer from './Footer.jsx';
 import BackToTop from './BackToTop.jsx';
+import ResumeViewer from './ResumeViewer.jsx';
 
 function App() {
   useEffect(() => {
@@ -51,6 +52,8 @@ function App() {
           <Route path="/experience" element={<Experience />} />
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/resume" element={<ResumeViewer />} />
+
         </Routes>
         <Footer />
         <BackToTop />
